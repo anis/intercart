@@ -7,7 +7,7 @@ var expect = require('expect.js');
 var cart = new Cart();
 var tomato = new CartItem('tomato');
 var potato = new CartItem('potato');
-var fish = new CartItem('fish');
+var redBull = new CartItem('redBull');
 
 describe('Cart', function () {
     describe('#addItem', function () {
@@ -120,7 +120,7 @@ describe('Cart', function () {
         // Yeah, well, could not find any better assertion description..
         it('should indicate the accurate information', function () {
             assert.equal(true, cart.hasItem(tomato));
-            assert.equal(false, cart.hasItem(fish));
+            assert.equal(false, cart.hasItem(redBull));
             cart.removeItem(tomato);
             assert.equal(false, cart.hasItem(tomato));
         });
