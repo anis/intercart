@@ -100,6 +100,10 @@ describe('Cart', function () {
             assert.equal(cart.getQuantityOf(tomato), 1300);
         });
 
+        it('should do nothing if the item of which the quantity should be reduced is not in the cart', function () {
+            cart.removeItem(redBull, 1337);
+        });
+
         it('should return itself', function () {
             assert.equal(cart.removeItem(potato), cart);
         });

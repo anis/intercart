@@ -12,9 +12,17 @@ function Cart() {
     var that = this;
 
     /*
+     * An element of the inner private variable 'list'
+     * 
+     * @typedef {Object} ListItem
+     * @property {CartItem} instance Reference to the item instance
+     * @property {number}   quantity Quantity of that item
+     */
+
+    /*
      * Items list
      * 
-     * @type {Object}
+     * @type {Object.<string,ListItem>}
      */
     var list = {};
 
@@ -32,9 +40,12 @@ function Cart() {
         } else if (isNaN(quantity) || quantity < 1) {
             throw 'The parameter #2 should be a positive number';
         } else if (!that.hasItem(item)) {
-            list[item.getName()] = quantity;
+            list[item.getName()] = {
+                'instance': item,
+                'quantity': quantity
+            };
         } else {
-            list[item.getName()] += quantity;
+            list[item.getName()].quantity += quantity;
         }
 
         return that;
@@ -51,12 +62,14 @@ function Cart() {
     this.removeItem = function (item, quantity) {
         if (typeof item !== "object" || item === null || item.constructor !== CartItem) {
             throw 'The parameter #1 should be a CartItem instance';
-        } else if (!isNaN(quantity)) {
-            if (quantity > 0) {
-                list[item.getName()] -= quantity;
+        } else if (that.hasItem(item)) {
+            if (!isNaN(quantity)) {
+                if (quantity > 0) {
+                    list[item.getName()].quantity -= quantity;
+                }
+            } else {
+                delete list[item.getName()];
             }
-        } else {
-            delete list[item.getName()];
         }
 
         return that;
@@ -75,7 +88,7 @@ function Cart() {
         } else if (!that.hasItem(item)) {
             return 0;
         } else {
-            return list[item.getName()];
+            return list[item.getName()].quantity;
         }
     };
 
