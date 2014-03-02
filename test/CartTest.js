@@ -129,4 +129,22 @@ describe('Cart', function () {
             assert.equal(false, cart.hasItem(tomato));
         });
     });
+
+    describe("#empty", function () {
+        it('should remove every item', function () {
+            cart.addItem(tomato, 25);
+            cart.addItem(potato, 10);
+            cart.addItem(redBull,   1989);
+
+            cart.empty();
+
+            assert.equal(cart.getQuantityOf(tomato), 0);
+            assert.equal(cart.getQuantityOf(potato), 0);
+            assert.equal(cart.getQuantityOf(redBull), 0);
+        });
+
+        it('should return itself', function () {
+            assert.equal(cart.empty(), cart);
+        });
+    });
 });

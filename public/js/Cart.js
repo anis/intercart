@@ -106,6 +106,21 @@ function Cart() {
             return list.hasOwnProperty(item.getName());
         }
     };
+
+    /**
+     * Removes every item from the cart
+     * 
+     * @returns {Cart} for method chaining
+     */
+    this.empty = function () {
+        for (var field in list) {
+            if (list.hasOwnProperty(field)) {
+                that.removeItem(list[field].instance);
+            }
+        }
+
+        return that;
+    };
 }
 
 module.exports.Cart = Cart;
