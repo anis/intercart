@@ -1,0 +1,15 @@
+{
+    "name": "intercart",
+    "preferGlobal": true,
+    "version": "0.1.0",
+    "author": "Anis Safine <anis@safine.me>",
+    "description": "Shopping list webapp",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/anis/intercart.git"
+    },
+    "license": "Apache V2",
+    "devDependencies": {
+        "expect.js": "0.3.1"
+    }
+}
