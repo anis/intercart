@@ -35,7 +35,7 @@ function Cart() {
      * @returns {Cart} for method chaining
      */
     this.addItem = function (item, quantity) {
-        if (typeof item !== "object" || item === null || item.constructor !== CartItem) {
+        if (typeof item !== 'object' || item === null || item.constructor !== CartItem) {
             throw 'The parameter #1 should be a CartItem instance';
         } else if (isNaN(quantity) || quantity < 1) {
             throw 'The parameter #2 should be a positive number';
@@ -60,7 +60,7 @@ function Cart() {
      * @returns {Cart} for method chaining
      */
     this.removeItem = function (item, quantity) {
-        if (typeof item !== "object" || item === null || item.constructor !== CartItem) {
+        if (typeof item !== 'object' || item === null || item.constructor !== CartItem) {
             throw 'The parameter #1 should be a CartItem instance';
         } else if (that.hasItem(item)) {
             if (!isNaN(quantity)) {
@@ -83,7 +83,7 @@ function Cart() {
      * @returns {number} The quantity or 0 if the item is not in the cart
      */
     this.getQuantityOf = function (item) {
-        if (typeof item !== "object" || item === null || item.constructor !== CartItem) {
+        if (typeof item !== 'object' || item === null || item.constructor !== CartItem) {
             throw 'The parameter #1 should be a CartItem instance';
         } else if (!that.hasItem(item)) {
             return 0;
@@ -100,7 +100,7 @@ function Cart() {
      * @returns {boolean}
      */
     this.hasItem = function (item) {
-        if (typeof item !== "object" || item === null || item.constructor !== CartItem) {
+        if (typeof item !== 'object' || item === null || item.constructor !== CartItem) {
             throw 'The parameter #1 should be a CartItem instance';
         } else {
             return list.hasOwnProperty(item.getName());
@@ -120,6 +120,26 @@ function Cart() {
         }
 
         return that;
+    };
+
+    /**
+     * @callback ForeachCallback
+     * @param {ItemList} item Item
+     */
+
+    /**
+     * Applies a callback to every item in the cart
+     * 
+     * @param {ForeachCallback} callback Function to be applied on every item
+     * 
+     * @returns {Cart} for method chaining
+     */
+    this.foreach = function (callback) {
+        for (var field in list) {
+            if (list.hasOwnProperty(field)) {
+                callback(list[field]);
+            }
+        }
     };
 }
 

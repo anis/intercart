@@ -72,7 +72,7 @@ describe('Cart', function () {
         });
     });
 
-    describe("#removeItem", function () {
+    describe('#removeItem', function () {
         it('should take an Item as first parameter', function () {
             expect(function () {
                 cart.removeItem();
@@ -109,7 +109,7 @@ describe('Cart', function () {
         });
     });
 
-    describe("#hasItem", function () {
+    describe('#hasItem', function () {
         it('should take an Item as first parameter', function () {
             expect(function () {
                 cart.hasItem();
@@ -130,7 +130,7 @@ describe('Cart', function () {
         });
     });
 
-    describe("#empty", function () {
+    describe('#empty', function () {
         it('should remove every item', function () {
             cart.addItem(tomato, 25);
             cart.addItem(potato, 10);
@@ -145,6 +145,20 @@ describe('Cart', function () {
 
         it('should return itself', function () {
             assert.equal(cart.empty(), cart);
+        });
+    });
+
+    describe('#foreach', function () {
+        it('should apply the callback to each item', function () {
+            cart.addItem(tomato, 1337);
+            cart.addItem(potato, 42);
+
+            cart.foreach(function (item) {
+                cart.addItem(item.instance, item.quantity);
+            });
+
+            assert.equal(cart.getQuantityOf(tomato), 2674);
+            assert.equal(cart.getQuantityOf(potato), 84);
         });
     });
 });
