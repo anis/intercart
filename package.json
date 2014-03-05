@@ -1,15 +1,25 @@
 {
-    "name": "intercart",
-    "preferGlobal": true,
-    "version": "0.1.0",
-    "author": "Anis Safine <anis@safine.me>",
+    "name":        "intercart",
+    "version":     "0.1.0",
     "description": "Shopping list webapp",
+    "author":      "Anis Safine <anis@safine.me>",
+
     "repository": {
         "type": "git",
-        "url": "https://github.com/anis/intercart.git"
+        "url":  "https://github.com/anis/intercart.git"
     },
-    "license": "Apache V2",
+    "licenses": [
+        {
+            "type": "Apache-2.0",
+            "url":  "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+    ],
+
+    "dependencies": {
+        "requirejs": "~2.1.11"
+    },
     "devDependencies": {
-        "expect.js": "0.3.1"
+        "mocha-phantomjs": "~3.3.2",
+        "chai":            "~1.9.0"
     }
 }

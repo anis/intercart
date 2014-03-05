@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./vendor/mocha/mocha.css" />
+    </head>
+
+    <body>
+        <div id="mocha"></div>
+
+        <!-- Mocha and Chai -->
+        <script src="./vendor/mocha/mocha.js"></script>
+        <script src="./vendor/chai/chai.js"></script>
+        <script>
+            mocha.ui('bdd');
+            mocha.reporter('html');
+        </script>
+
+        <!-- RequireJs -->
+        <script src="./vendor/require/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: '../../',
+                paths: {
+                    'chai': 'private/tests/vendor/chai/chai'
+                }
+            });
+
+            require(['private/tests/src/CartItemTest', 'private/tests/src/CartTest'], function() {
+                if (window.mochaPhantomJS) {
+                    mochaPhantomJS.run();
+                } else {
+                    mocha.run();
+                }
+            });
+        </script>
+    </body>
+</html>
