@@ -1,4 +1,4 @@
-define(['public/js/src/CartItem'], function (CartItem) {
+define(['intercart/CartItem'], function (CartItem) {
     /**
      * Cart
      */

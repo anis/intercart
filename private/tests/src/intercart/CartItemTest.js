@@ -1,4 +1,4 @@
-define(['chai', 'public/js/src/CartItem'], function (chai, CartItem) {
+define(['chai', 'intercart/CartItem'], function (chai, CartItem) {
     var assert = chai.assert;
 
     describe('CartItem', function () {

@@ -20,13 +20,14 @@
         <script src="./vendor/require/require.js"></script>
         <script>
             require.config({
-                baseUrl: '../../',
+                baseUrl: '../../public/js/src/',
                 paths: {
-                    'chai': 'private/tests/vendor/chai/chai'
+                    'tests': '../../../private/tests/src/',
+                    'chai': '../../../private/tests/vendor/chai/chai'
                 }
             });
 
-            require(['private/tests/src/CartItemTest', 'private/tests/src/CartTest'], function() {
+            require(['tests/intercart/CartItemTest', 'tests/intercart/CartTest'], function() {
                 if (window.mochaPhantomJS) {
                     mochaPhantomJS.run();
                 } else {
